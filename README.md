@@ -1,5 +1,7 @@
 # Layer
 
+先push一下markdown 和 Layer 源码，具体 demo 我更换一下没版权的图片再更。
+
 ## Layer 父类
 
 示例展示的是一进场景就弹窗的方式
@@ -123,6 +125,10 @@ this.btnSprite.node.on('touchend', () => {
 
 依赖一个 名为 `Layer` 的 `Prefab` 预制资源包，无其他依赖。
 预制资源包需要放置在 `resources` 内。
+
+## TODO
+
+改成不依赖预制资源包，直接创建节点，创建button节点，创建单色节点。
 
 ## 添加复杂场景的建议
 
