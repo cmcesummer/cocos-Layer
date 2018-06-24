@@ -1,6 +1,6 @@
 # Layer
 
-先push一下markdown 和 Layer 源码，具体 demo 我更换一下没版权的图片再更。
+先push一下markdown 和 Layer 源码，具体 demo 我更换一下没版权的图片再更。   
 引入文件 `Layer.js` 或者 `LayerPro.js` 都可以，推荐使用 `LayerPro.js`
 
 ## Layer 父类
@@ -122,19 +122,29 @@ this.btnSprite.node.on('touchend', () => {
 
 ```
 
-## 使用 Layer 的依赖
+## 依赖
 
-依赖一个 名为 `Layer` 的 `Prefab` 预制资源包，无其他依赖。
-预制资源包需要放置在 `resources` 内。
+- Layer   
+    依赖一个 名为 `Layer` 的 `Prefab` 预制资源包，无其他依赖。  
+    预制资源包需要放置在 `resources` 内。
+- LayerPro   
+    依赖背景图片。需要放置在 `resources` 内。
 
 ## TODO
 
-改成不依赖预制资源包，直接创建节点，创建button节点，创建单色节点。
+改成不依赖预制资源包，直接创建节点，创建button节点，创建单色节点。  
+
+修改完毕，使用 `LayerPro` 不依赖预制资源包， 但是依赖一张背景图片。原因： [目前不支持 脚本创建单色](https://github.com/cocos-creator/engine/issues/2567)
 
 ## 添加复杂场景的建议
 
-当场景复杂的时候可以先制作一个 `Prefab` 再在 `init_cb` 回调内添加到 `body` 内。
-制作`Prefab`流程： 先在`层级管理器`绘制好， 再拖到`资源管理器`的 `resources` 文件夹内。
+当场景复杂的时候可以先制作一个 `Prefab` 再在 `init_cb` 回调内添加到 `body` 内。  
+制作`Prefab`流程： 先在`层级管理器`绘制好， 再拖到`资源管理器`的 `resources` 文件夹内。  
 修改`Prefab`流程： 把资源包拖到`层级管理器`中进行修改，完成后点击`属性检查器`中右上角的保存即可同步到资源包。
 
-## 
+## 区别说明
+基础用法是无区别的，init均是返回的 Promise ,目的是为了兼容 Layer.  
+LayerPro 的 Alert 添加 静态的方法 `static addButton`, 添加按钮，方便添加按钮。   
+参数 `{ url, text, font_size, rgb, width, height, x, y }` 。
+具体实现上进行调整，不再使用预制资源，改为动态创建结构，但是也存在问题（见 ##TODO）。  
+结构上微调，基类`Layer` 不再创建 `button`, 而是在 `Alert`内创建`Button,Label`等。
