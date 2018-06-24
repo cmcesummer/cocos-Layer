@@ -1,6 +1,7 @@
 # Layer
 
 先push一下markdown 和 Layer 源码，具体 demo 我更换一下没版权的图片再更。
+引入文件 `Layer.js` 或者 `LayerPro.js` 都可以，推荐使用 `LayerPro.js`
 
 ## Layer 父类
 
@@ -135,3 +136,5 @@ this.btnSprite.node.on('touchend', () => {
 当场景复杂的时候可以先制作一个 `Prefab` 再在 `init_cb` 回调内添加到 `body` 内。
 制作`Prefab`流程： 先在`层级管理器`绘制好， 再拖到`资源管理器`的 `resources` 文件夹内。
 修改`Prefab`流程： 把资源包拖到`层级管理器`中进行修改，完成后点击`属性检查器`中右上角的保存即可同步到资源包。
+
+## 
