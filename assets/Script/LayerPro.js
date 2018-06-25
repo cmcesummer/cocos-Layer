@@ -30,7 +30,7 @@ class Layer {
     // 初始化
     init = () => {
         let layer;
-        const { width, height, url, bg_close, init_cb, render_type, opacity, animation = 0.2 } = this.initMap;
+        const { width, height, url, bg_close, init_cb, render_type, opacity, animation = 0.2, bg_sprite } = this.initMap;
         return new Promise((resolve, reject) => {
             if(!~layerList.indexOf(this)) {
                 layerList.push(this);
@@ -49,7 +49,7 @@ class Layer {
             bgSprite.sizeMode = 0;
             // https://github.com/cocos-creator/engine/issues/2567  
             // 目前不支持 脚本创建单色 sprite, 所以只能传递
-            Layer.changeSprite(bg, 'resources/default_sprite_splash.png');
+            Layer.changeSprite(bg, bg_sprite ? bg_sprite : 'resources/default_sprite_splash.png');
             bg.parent = layer;
             body.parent = layer;
             bg.opacity = opacity ? Number(opacity) : 125;

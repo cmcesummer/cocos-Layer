@@ -1,6 +1,6 @@
 # Layer
 
-先push一下markdown 和 Layer 源码，具体 demo 我更换一下没版权的图片再更。   
+最新更新： 添加DEMO， 打开直接就可以查看。   
 引入文件 `Layer.js` 或者 `LayerPro.js` 都可以，推荐使用 `LayerPro.js`
 
 ## Layer 父类
@@ -24,23 +24,6 @@ let layer = new Layer({
     animation: false,
     // 修改渲染模式 0: SIMPLE  1:SLICED   现在不管用
     render_type: 1,
-    // 确定按钮 不定义就是不添加按钮
-    sure_btn: {
-        // 背景图
-        url: 'resources/lord_btn_Next_n.png',
-        // 按钮文案
-        text: '',
-        // 字体大小 默认 '34'
-        font_size:'',
-        // 字体颜色
-        rgb: [0,255,255],
-        width: '237',
-        height: '130',
-        x: '-130',
-        y: '-90'
-    },
-    // 取消按钮 定义同确定按钮
-    close_btn: {},
     // 初始化回调， 用于往layer上添加自定义元素
     init_cb: function(obj) {
         const node = new cc.Node('Sprite');
@@ -76,11 +59,20 @@ layer.init().then(layers => {
 ```javascript
 let alert = new Alert ({
     url: 'resources/Window-bottom.png',
+    // 确定按钮 不定义就是不添加按钮
     sure_btn: {
+        // 背景图
         url: 'resources/lord_btn_Next_n.png',
+        // 按钮文案
+        text: '',
+        // 字体大小 默认 '34'
+        font_size:'',
+        // 字体颜色
+        rgb: [0,255,255],
         width: '237',
         height: '130',
-        x: '-130'
+        x: '-130',
+        y: '-90'
     },
     close_btn: {
         url: 'resources/lord_btn_replay_d.png',
@@ -143,8 +135,11 @@ this.btnSprite.node.on('touchend', () => {
 修改`Prefab`流程： 把资源包拖到`层级管理器`中进行修改，完成后点击`属性检查器`中右上角的保存即可同步到资源包。
 
 ## 区别说明
-基础用法是无区别的，init均是返回的 Promise ,目的是为了兼容 Layer.  
-LayerPro 的 Alert 添加 静态的方法 `static addButton`, 添加按钮，方便添加按钮。   
-参数 `{ url, text, font_size, rgb, width, height, x, y }` 。
-具体实现上进行调整，不再使用预制资源，改为动态创建结构，但是也存在问题（见 ##TODO）。  
-结构上微调，基类`Layer` 不再创建 `button`, 而是在 `Alert`内创建`Button,Label`等。
+- 基础用法是基本无区别的，init均是返回的 `Promise` ,目的是为了兼容 `Layer`.  
+    - `LayerPro.js` 中的 `Layer`类 没有 `sure_btn` `close_btn` 参数，`Alert`类有该参数。  
+    - 这里均返回 `promise` 好吗？ `LayerPro`明显是同步的。 返这样做的目的是两个库的写法一致，兼容，但对于`LayerPro`来说是否略显繁琐？  
+- LayerPro 的 Alert 添加 静态的方法 `static addButton`, 添加按钮，方便添加按钮。   
+    - 参数 `{ url, text, font_size, rgb, width, height, x, y }` 。
+- 具体实现上进行调整，不再使用预制资源，改为动态创建结构，但是也存在问题（见 ##TODO）。  
+    - 所以在 `LayerPro` 中存在默认背景， 当然也可以动态传入参数 `bg_sprite` 为背景图。  
+- 结构上微调，基类`Layer` 不再创建 `button`, 而是在 `Alert`内创建`Button,Label`等。  
