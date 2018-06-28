@@ -1,8 +1,8 @@
 # Layer
 
 最新更新： 添加DEMO， 打开直接就可以查看。   
-引入文件 `Layer.js` 或者 `LayerPro.js` 都可以，推荐使用 `LayerPro.js`
-
+引入文件 `Layer.js` 或者 `LayerPro.js` 都可以，推荐使用 `LayerPro.js`，职责划分更明确。  
+ 
 ## Layer 父类
 
 示例展示的是一进场景就弹窗的方式
