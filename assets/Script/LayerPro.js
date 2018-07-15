@@ -1,10 +1,3 @@
-/*
- * @Author: zhanghao 
- * @Date: 2018-06-24 14:20:00 
- * @Last Modified by: zhanghao
- * @Last Modified time: 2018-06-24 16:42:02
- */
-
 let layerList = []; 
 let id = 0;
 
