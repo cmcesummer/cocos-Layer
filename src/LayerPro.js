@@ -1,3 +1,4 @@
+// 当前存在的弹层列表
 let layerList = []; 
 let id = 0;
 
